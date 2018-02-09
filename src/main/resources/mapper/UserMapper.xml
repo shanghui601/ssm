@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hansky.dao.UserMapper">
+
+    <select id="findAll" resultType="com.hansky.demo.User">
+        SELECT * FROM user
+    </select>
+
+    <select id="findOne" parameterType="int" resultType="com.hansky.demo.User">
+      select * from user where id=#{id}
+    </select>
+
+    <insert id="save" parameterType="com.hansky.demo.User">
+        INSERT INTO user(username,age)
+        VALUES (
+        #{username},
+        #{age}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.hansky.demo.User">
+        UPDATE user
+        SET username=#{username},age=#{age}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
+
+
+</mapper>
